@@ -83,12 +83,12 @@ function pack_for_download($catalogID, $tmpDir, $include_booklet=TRUE)
     
     assemble_for_download($album, $track, $APICdata, $tmpDir);
   }
-  if(file_exists("/var/www/thrill_jockey/prueba/".$album['artist'].".zip"))
+  if(file_exists("/var/www/thrill_jockey/prueba/".$album['artist']."-".$album['catnum']."-".$album['title'].".zip"))
   {
-    unlink("/var/www/thrill_jockey/prueba/".$album['artist'].".zip");
+    unlink("/var/www/thrill_jockey/prueba/".$album['artist']."-".$album['catnum']."-".$album['title'].".zip");
   }
   $zip = new ZipArchive();
-  $zip_file = "/var/www/thrill_jockey/prueba/".$album['artist'].".zip";
+  $zip_file = "/var/www/thrill_jockey/prueba/".$album['artist']."-".$album['catnum']."-".$album['title'].".zip";
   $dir = opendir("/var/www/thrill_jockey/prueba/".$album['catnum']);
   $file_list = array();
   

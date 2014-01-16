@@ -38,9 +38,12 @@ function check_record_crate(){
 xmlhttp.send(); 
 }
 
-function download(id,a,remaining,pid,did){
+function download(id,a,c,t,remaining,pid,did){
  var artist = document.getElementById(a).value;  
- window.location='http://50.57.169.40/thrill_jockey/orders/'.concat(artist).concat(".zip"); 
+ var catnum = document.getElementById(c).value;
+ var title = document.getElementById(t).value;
+ title = title.replace("/", '');
+ window.location='http://50.57.169.40/thrill_jockey/orders/'.concat(artist).concat("-").concat(title).concat("-").concat(catnum).concat(".zip"); 
  var result;
  var xmlhttp;
  if(window.XMLHttpRequest)

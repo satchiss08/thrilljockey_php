@@ -20,10 +20,14 @@ while ($row = mysqli_fetch_array($result) ) {
  
  $response="";
  $a= 0;
+ $c= 1;
+ $t= 2;
  foreach ($crate as $record) {
-    $response =$response."<b>".$record['artist']."</b><br>".$record['album']."Remaining: <b>".$record['remaining']."</b>";
-    $response = $response."<input type='text' id=".$a." value='".$record['artist']."'"." style='display:none;'/><input type='button' value='Download' onClick='download(".$pass.",".$a.",".$record['remaining'].",".$record['pid'].",".$record['did'].")'/><br><br>";
+    $response =$response."<b>".$record['artist']."</b><br>".$record['album']." Remaining: <b>".$record['remaining']."</b>";
+    $response = $response."<input type='text' id=".$a." value='".$record['artist']."'"." style='display:none;'/><input type='text' id=".$c." value='".$record['catnum']."'"." style='display:none;'/><input type='text' id=".$t." value='".$record['album']."'"." style='display:none;'/><input type='button' value='Download' onClick='download(".$pass.",".$a.",".$c.",".$t.",".$record['remaining'].",".$record['pid'].",".$record['did'].")'/><br><br>";
   $a++;
+  $c++;
+  $t++;
  }
  echo $response;
   mysqli_close($conn); 

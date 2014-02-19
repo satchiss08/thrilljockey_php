@@ -19,7 +19,7 @@ function check_record_crate(){
  {
    xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
  }
- xmlhttp.open("GET", "check_record_crate.php?session=" + code, true);
+ xmlhttp.open("GET", "check_record_crate.php?user_id=" + code, true);
  xmlhttp.onreadystatechange = function()
  {
   if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
@@ -38,12 +38,11 @@ function check_record_crate(){
 xmlhttp.send(); 
 }
 
-function download(id,a,c,t,remaining,pid,did){
- var artist = document.getElementById(a).value;  
- var catnum = document.getElementById(c).value;
- var title = document.getElementById(t).value;
- title = title.replace("/", '');
- window.location='http://50.57.169.40/thrill_jockey/orders/'.concat(artist).concat("-").concat(title).concat("-").concat(catnum).concat(".zip"); 
+function download(user_id,a,t,variant_id,remaining,product_id,download_id){
+ var artist = document.getElementById(a).value;
+ var album = document.getElementById(t).value;
+ album = album.replace("/", '');
+ window.location='http://50.57.169.40/thrill_jockey/orders/'.concat(artist).concat("-").concat(album).concat("-").concat(variant_id).concat(".zip"); 
  var result;
  var xmlhttp;
  if(window.XMLHttpRequest)
@@ -54,7 +53,7 @@ function download(id,a,c,t,remaining,pid,did){
  {
    xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
  }
- xmlhttp.open("GET", "update.php?user=" + id +"&remaining="+ remaining +"&pid=" + pid + "&did="+did , true);
+ xmlhttp.open("GET", "update.php?user_id=" + user_id + "&remaining="+ remaining + "&product_id=" + product_id + "&download_id=" + download_id , true);
  xmlhttp.onreadystatechange = function()
  {
   if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
